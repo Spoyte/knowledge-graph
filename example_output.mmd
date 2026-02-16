@@ -1,0 +1,118 @@
+graph TD
+    root["root"]
+    taskqueue["taskqueue"]
+    config_manager["config_manager"]
+    providers["providers"]
+    core["core"]
+    secrets_cli["secrets_cli"]
+    code_synthesis["code_synthesis"]
+    synthesis["synthesis"]
+    parser["parser"]
+    validator["validator"]
+    patterns["patterns"]
+    taskqueue -->|"uses argparse"| root
+    providers -->|"uses json"| core
+    providers -->|"uses json"| config_manager
+    providers -->|"uses json"| secrets_cli
+    providers -->|"uses json"| root
+    providers -->|"uses json"| taskqueue
+    core -->|"uses json"| config_manager
+    core -->|"uses json"| secrets_cli
+    core -->|"uses json"| root
+    core -->|"uses json"| taskqueue
+    config_manager -->|"uses json"| secrets_cli
+    config_manager -->|"uses json"| root
+    config_manager -->|"uses json"| taskqueue
+    secrets_cli -->|"uses json"| root
+    secrets_cli -->|"uses json"| taskqueue
+    root -->|"uses json"| taskqueue
+    providers -->|"uses pathlib"| core
+    providers -->|"uses pathlib"| config_manager
+    providers -->|"uses pathlib"| secrets_cli
+    providers -->|"uses pathlib"| root
+    core -->|"uses pathlib"| config_manager
+    core -->|"uses pathlib"| secrets_cli
+    core -->|"uses pathlib"| root
+    config_manager -->|"uses pathlib"| secrets_cli
+    config_manager -->|"uses pathlib"| root
+    secrets_cli -->|"uses pathlib"| root
+    providers -->|"uses typing"| core
+    providers -->|"uses typing"| config_manager
+    providers -->|"uses typing"| secrets_cli
+    providers -->|"uses typing"| code_synthesis
+    providers -->|"uses typing"| root
+    providers -->|"uses typing"| taskqueue
+    core -->|"uses typing"| config_manager
+    core -->|"uses typing"| secrets_cli
+    core -->|"uses typing"| code_synthesis
+    core -->|"uses typing"| root
+    core -->|"uses typing"| taskqueue
+    config_manager -->|"uses typing"| secrets_cli
+    config_manager -->|"uses typing"| code_synthesis
+    config_manager -->|"uses typing"| root
+    config_manager -->|"uses typing"| taskqueue
+    secrets_cli -->|"uses typing"| code_synthesis
+    secrets_cli -->|"uses typing"| root
+    secrets_cli -->|"uses typing"| taskqueue
+    code_synthesis -->|"uses typing"| root
+    code_synthesis -->|"uses typing"| taskqueue
+    root -->|"uses typing"| taskqueue
+    taskqueue -->|"uses sys"| root
+    taskqueue -->|"uses sys"| config_manager
+    root -->|"uses sys"| config_manager
+    config_manager -->|"uses os"| secrets_cli
+    config_manager -->|"uses os"| code_synthesis
+    config_manager -->|"uses os"| root
+    config_manager -->|"uses os"| taskqueue
+    secrets_cli -->|"uses os"| code_synthesis
+    secrets_cli -->|"uses os"| root
+    secrets_cli -->|"uses os"| taskqueue
+    code_synthesis -->|"uses os"| root
+    code_synthesis -->|"uses os"| taskqueue
+    root -->|"uses os"| taskqueue
+    core -->|"uses datetime"| taskqueue
+    core -->|"uses datetime"| secrets_cli
+    core -->|"uses datetime"| root
+    taskqueue -->|"uses datetime"| secrets_cli
+    taskqueue -->|"uses datetime"| root
+    secrets_cli -->|"uses datetime"| root
+    secrets_cli -->|"uses dataclasses"| root
+    core -->|"uses time"| taskqueue
+    core -->|"uses time"| secrets_cli
+    core -->|"uses time"| root
+    taskqueue -->|"uses time"| secrets_cli
+    taskqueue -->|"uses time"| root
+    secrets_cli -->|"uses time"| root
+    taskqueue -->|"uses http"| root
+    taskqueue -->|"uses logging"| root
+    taskqueue -->|"uses subprocess"| root
+    taskqueue -->|"uses unittest"| root
+    providers -->|"uses yaml"| core
+    providers -->|"uses yaml"| config_manager
+    providers -->|"uses yaml"| secrets_cli
+    providers -->|"uses yaml"| code_synthesis
+    providers -->|"uses yaml"| root
+    core -->|"uses yaml"| config_manager
+    core -->|"uses yaml"| secrets_cli
+    core -->|"uses yaml"| code_synthesis
+    core -->|"uses yaml"| root
+    config_manager -->|"uses yaml"| secrets_cli
+    config_manager -->|"uses yaml"| code_synthesis
+    config_manager -->|"uses yaml"| root
+    secrets_cli -->|"uses yaml"| code_synthesis
+    secrets_cli -->|"uses yaml"| root
+    code_synthesis -->|"uses yaml"| root
+    secrets_cli -->|"uses string"| root
+    secrets_cli -->|"uses boto3"| root
+    secrets_cli -->|"uses secrets"| root
+    secrets_cli -->|"uses hvac"| root
+    secrets_cli -->|"uses click"| root
+    secrets_cli -->|"uses click"| config_manager
+    root -->|"uses click"| config_manager
+    core -->|"uses core"| root
+    secrets_cli -->|"uses abc"| providers
+    secrets_cli -->|"uses abc"| root
+    providers -->|"uses abc"| root
+    root -->|"uses validator"| config_manager
+    core -->|"uses uuid"| taskqueue
+    core -->|"uses deepdiff"| config_manager
